@@ -114,10 +114,13 @@ add_action( 'widgets_init', 'file_time_widgets_init' );
  * Enqueue scripts and styles.
  */
 function file_time_scripts() {
-	wp_enqueue_style( 'file-time-style', get_stylesheet_uri() );
-
+    
+    wp_enqueue_style('file-time-reset', get_template_directory_uri() . '/inc/reset.css');
+	wp_enqueue_style('file-time-style', get_stylesheet_uri() );
+    wp_enqueue_style('file-time-bootcss','https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css');
+    wp_enqueue_script('file-time-jquery','https://code.jquery.com/jquery-2.2.0.min.js');
+    wp_enqueue_script('file-time-bootjs','https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js');
 	wp_enqueue_script( 'file-time-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20120206', true );
-
 	wp_enqueue_script( 'file-time-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20130115', true );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
